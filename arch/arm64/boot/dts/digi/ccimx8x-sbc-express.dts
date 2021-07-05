@@ -113,7 +113,7 @@
  * the pinctrl_expansion node.
  */
 &flexcan3 {
-	status = "disabled";
+	status = "okay";
 };
 
 /*
@@ -339,8 +339,8 @@
 			IMX8QXP_FLEXCAN1_TX_LSIO_GPIO1_IO18	0x06000020
 
 			/* Remove these if you wish to use the flexcan3 interface */
-			IMX8QXP_FLEXCAN2_RX_LSIO_GPIO1_IO19	0x06000020
-			IMX8QXP_FLEXCAN2_TX_LSIO_GPIO1_IO20	0x06000020
+			/*IMX8QXP_FLEXCAN2_RX_LSIO_GPIO1_IO19	0x06000020
+			IMX8QXP_FLEXCAN2_TX_LSIO_GPIO1_IO20	0x06000020*/
 		>;
 	};
 
