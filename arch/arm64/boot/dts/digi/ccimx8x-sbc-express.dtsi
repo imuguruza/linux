@@ -71,6 +71,26 @@
 			hsync-active = <1>;
 			vsync-active = <1>;
 		};
+
+    sound {
+    compatible = "simple-audio-card";
+    simple-audio-card,name = "imx8-tlv320";
+    simple-audio-card,format = "i2s";
+    simple-audio-card,bitclock-master = <0xf2>;
+    simple-audio-card,frame-master = <0xf2>;
+    simple-audio-card,widgets = "Speaker", "SPK ClassD";
+    simple-audio-card,routing = "SPK ClassD", "SPK";
+
+    simple-audio-card,cpu {
+      sound-dai = <0xf3>;
+      phandle = <0x203>;
+    };
+
+    simple-audio-card,codec {
+      sound-dai = <0x204>;
+      clocks = <0x84 0x0>;
+    };
+  };
 	};
 
 	regulators {
@@ -173,7 +193,18 @@
 	clock-frequency = <100000>;
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_lpi2c3>;
-	status = "disabled";
+	status = "okay";
+
+  codec@18 {
+  compatible = "ti,tlv320dac3100";
+  reg = <0x18>;
+  #sound-dai-cells = <0x0>;
+  status = "okay";
+  clocks = <0x84 0x0>;
+  assigned-clocks = <0x3 0x145 0x4 0x3 0x145 0x0 0x3 0x145 0x1 0x84 0x0>;
+  assigned-clock-rates = <0x2ee00000 0x2ee0000 0xb71b00 0xb71b00>;
+  phandle = <0x204>;
+  };
 };
 
 /* MIPI-DSI0 I2C available on LVDS connector */
